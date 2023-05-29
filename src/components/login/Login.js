@@ -31,6 +31,9 @@ function Login() {
     if (!showInputs) {
       setName("");
     }
+    if (LoggedIn) {
+      setPassword("");
+    }
   };
 
   const ChangeEmail = (event) => {
