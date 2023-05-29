@@ -10,10 +10,19 @@ function Login() {
   const [showInputs, setShowInputs] = useState(true);
   const [LoggedIn, setLoggedIn] = useState(false);
   const [showAvatar, setShowAvatar] = useState(false);
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     if (name.trim() === "") {
       window.alert("შეიყვანეთ მეილი");
+      return;
+    }
+    if (password.trim() === "") {
+      window.alert("შეიყვანეთ პაროლი");
+      return;
+    }
+    if (password.length < 8) {
+      window.alert("პაროლი უნდა შედგებოდეს მინიმუმ 8 სიმბოლოსგან");
       return;
     }
     setShowInputs(!showInputs);
@@ -51,7 +60,12 @@ function Login() {
                 </button>
               </div>
               <div className="input-wrapper">
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
                 <button type="button" className="input-button">
                   <img src={Visibility} alt="Visibility Logo" />
                 </button>
